@@ -20,9 +20,11 @@ import { FiBell, FiPlus } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { SidebarResponsive } from 'components/sidebar/Sidebar'; // keeps sidebar toggle
+import AddDeviceModal from 'components/modals/addDeviceModal';
 
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', changeNavbar);
@@ -63,11 +65,13 @@ export default function AdminNavbar(props) {
         {/* Search */}
         <InputGroup maxW="420px" flex="1">
           <InputLeftElement pointerEvents="none">
-            <SearchIcon color="gray.400" />
+            <SearchIcon color="gray.400" fontSize={'12px'} />
           </InputLeftElement>
           <Input
             placeholder="Search by date, case ID or officer name."
             variant="search"
+            fontSize={'12px'}
+            borderRadius={'10px'}
             px={4}
             py={5}
           />
@@ -90,6 +94,7 @@ export default function AdminNavbar(props) {
               border={'2px solid'}
               padding={'10px'}
               borderColor={'#012540B2'}
+              onClick={() => setIsOpen(!isOpen)}
             />
             <IconButton
               aria-label="Notifications"
@@ -125,6 +130,7 @@ export default function AdminNavbar(props) {
           </Menu>
         </HStack>
       </Flex>
+      <AddDeviceModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </Box>
   );
 }

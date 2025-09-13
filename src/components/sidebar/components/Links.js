@@ -23,6 +23,9 @@ export function SidebarLinks({ routes }) {
 
   const createLinks = (routes) =>
     routes.map((route, index) => {
+      if (route.sidebar === false) {
+        return null;
+      }
       if (route.category) {
         return (
           <Text

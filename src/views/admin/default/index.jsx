@@ -13,8 +13,10 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Card from 'components/common/card';
+import { useNavigate } from 'react-router-dom';
 
 export default function ConversationsPage() {
+  const navigate = useNavigate();
   const conversations = [
     {
       id: 1,
@@ -55,7 +57,7 @@ export default function ConversationsPage() {
   ];
 
   return (
-    <Card p="24px" minH="80vh">
+    <Card p="24px" minH="90vh" height="100%">
       {/* Header */}
       <Flex justify="space-between" align="center" mb="24px">
         <Text fontSize="28px" fontWeight="600" color={'#031227"'}>
@@ -115,7 +117,15 @@ export default function ConversationsPage() {
                 <Card key={conv.id}>
                   <HStack spacing="12px" align={'start'}>
                     <Avatar src={conv.avatar} size="md" />
-                    <Box bg="#e6e9ec" w="full" p={4} borderRadius={8}>
+                    <Box
+                      bg="#e6e9ec"
+                      w="full"
+                      p={4}
+                      borderRadius={8}
+                      _hover={{ bg: '#edeeef' }}
+                      cursor="pointer"
+                      onClick={() => navigate('/admin/default/note')}
+                    >
                       <Text fontSize="16px" fontWeight="600" color={'#012540'}>
                         {conv.title}
                       </Text>
@@ -140,7 +150,15 @@ export default function ConversationsPage() {
                 <Card key={conv.id}>
                   <HStack spacing="12px" align={'start'}>
                     <Avatar src={conv.avatar} size="md" />
-                    <Box bg="#e6e9ec" w="full" p={4} borderRadius={8}>
+                    <Box
+                      bg="#e6e9ec"
+                      w="full"
+                      p={4}
+                      borderRadius={8}
+                      _hover={{ bg: '#edeeef' }}
+                      cursor="pointer"
+                      onClick={() => navigate('/admin/default/note')}
+                    >
                       <Text fontSize="16px" fontWeight="600" color={'#012540'}>
                         {conv.title}
                       </Text>

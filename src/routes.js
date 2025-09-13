@@ -8,20 +8,20 @@ import {
   MdLock,
   MdOutlineShoppingCart,
   MdDashboard,
+  MdOutlineArticle,
 } from 'react-icons/md';
 
 // Admin Imports
 import MainDashboard from 'views/admin/default';
-import NFTMarketplace from 'views/admin/marketplace';
-import Profile from 'views/admin/profile';
-import DataTables from 'views/admin/dataTables';
-import RTL from 'views/admin/rtl';
+import NotePage from 'views/admin/note';
 
 // Auth Imports
 import SignInCentered from 'views/auth/signIn';
 import SignUpCentered from 'views/auth/signUp';
 import IdentityVerification from 'views/auth/identity-verification';
 import WelcomePage from 'views/auth/welcome';
+import ReportsPage from 'views/admin/reports';
+import ReportReview from 'views/admin/reports/reportReview';
 
 const routes = [
   {
@@ -31,41 +31,41 @@ const routes = [
     icon: <Icon as={MdDashboard} width="24px" height="24px" color="inherit" />,
     component: <MainDashboard />,
   },
-  // {
-  //   name: 'NFT Marketplace',
-  //   layout: '/admin',
-  //   path: '/nft-marketplace',
-  //   icon: (
-  //     <Icon
-  //       as={MdOutlineShoppingCart}
-  //       width="20px"
-  //       height="20px"
-  //       color="inherit"
-  //     />
-  //   ),
-  //   component: <NFTMarketplace />,
-  //   secondary: true,
-  // },
-  // {
-  //   name: 'Data Tables',
-  //   layout: '/admin',
-  //   icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-  //   path: '/data-tables',
-  //   component: <DataTables />,
-  // },
-  // {
-  //   name: 'Profile',
-  //   layout: '/admin',
-  //   path: '/profile',
-  //   icon: <Icon as={MdPerson} width="20px" height="20px" color="inherit" />,
-  //   component: <Profile />,
-  // },
+  {
+    name: 'Note',
+    layout: '/admin',
+    path: '/default/note',
+    icon: <Icon as={MdDashboard} width="24px" height="24px" color="inherit" />,
+    component: <NotePage />,
+    sidebar: false,
+  },
+  {
+    name: 'Reports',
+    layout: '/admin',
+    path: '/reports',
+    icon: (
+      <Icon as={MdOutlineArticle} width="24px" height="24px" color="inherit" />
+    ),
+    component: <ReportsPage />,
+  },
+  {
+    name: 'Reports Review',
+    layout: '/admin',
+    path: '/reports/review',
+    icon: (
+      <Icon as={MdOutlineArticle} width="24px" height="24px" color="inherit" />
+    ),
+    component: <ReportReview />,
+    sidebar: false,
+  },
+
   {
     name: 'Sign In',
     layout: '/auth',
     path: '/sign-in',
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: <SignInCentered />,
+    sidebar: false,
   },
   {
     name: 'Sign Up',
@@ -73,6 +73,7 @@ const routes = [
     path: '/sign-up',
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: <SignUpCentered />,
+    sidebar: false,
   },
   {
     name: 'Identity Verification',
@@ -80,6 +81,7 @@ const routes = [
     path: '/identity-verification',
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: <IdentityVerification />,
+    sidebar: false,
   },
   {
     name: 'Welcome Page',
@@ -87,6 +89,7 @@ const routes = [
     path: '/welcome',
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: <WelcomePage />,
+    sidebar: false,
   },
   // {
   //   name: 'RTL Admin',
