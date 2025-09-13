@@ -1,145 +1,137 @@
 // Chakra Imports
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Link, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  IconButton,
+  Avatar,
+  Text,
+  HStack,
+  useColorModeValue,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
+import { FiBell, FiPlus } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-import AdminNavbarLinks from 'components/navbar/NavbarLinksAdmin';
+import { SidebarResponsive } from 'components/sidebar/Sidebar'; // keeps sidebar toggle
 
 export default function AdminNavbar(props) {
-	const [ scrolled, setScrolled ] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-	useEffect(() => {
-		window.addEventListener('scroll', changeNavbar);
+  useEffect(() => {
+    window.addEventListener('scroll', changeNavbar);
+    return () => window.removeEventListener('scroll', changeNavbar);
+  });
 
-		return () => {
-			window.removeEventListener('scroll', changeNavbar);
-		};
-	});
+  const changeNavbar = () => {
+    setScrolled(window.scrollY > 1);
+  };
 
-	const { secondary, message, brandText } = props;
+  let navbarBg = useColorModeValue('white', 'navy.800');
+  let mainText = useColorModeValue('navy.700', 'white');
 
-	// Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
-	let mainText = useColorModeValue('navy.700', 'white');
-	let secondaryText = useColorModeValue('gray.700', 'white');
-	let navbarPosition = 'fixed';
-	let navbarFilter = 'none';
-	let navbarBackdrop = 'blur(20px)';
-	let navbarShadow = 'none';
-	let navbarBg = useColorModeValue('rgba(244, 247, 254, 0.2)', 'rgba(11,20,55,0.5)');
-	let navbarBorder = 'transparent';
-	let secondaryMargin = '0px';
-	let paddingX = '15px';
-	let gap = '0px';
-	const changeNavbar = () => {
-		if (window.scrollY > 1) {
-			setScrolled(true);
-		} else {
-			setScrolled(false);
-		}
-	};
+  return (
+    <Box
+      position="fixed"
+      top={{ base: '12px', md: '16px' }}
+      right={{ base: '12px', md: '30px' }}
+      w={{
+        base: 'calc(100vw - 6%)',
+        md: 'calc(100vw - 8%)',
+        lg: 'calc(100vw - 6%)',
+        xl: 'calc(100vw - 290px)',
+        '2xl': 'calc(100vw - 290px)',
+      }}
+      bg={'transparent'}
+      px="20px"
+      py="10px"
+      zIndex="10"
+    >
+      <Flex
+        w="100%"
+        align="center"
+        justify="space-between"
+        direction={{ base: 'column', md: 'row' }}
+        gap={{ base: 3, md: 0 }}
+      >
+        {/* Search */}
+        <InputGroup maxW="420px" flex="1">
+          <InputLeftElement pointerEvents="none">
+            <SearchIcon color="gray.400" />
+          </InputLeftElement>
+          <Input
+            placeholder="Search by date, case ID or officer name."
+            variant="search"
+            px={4}
+            py={5}
+          />
+        </InputGroup>
 
-	return (
-		<Box
-			position={navbarPosition}
-			boxShadow={navbarShadow}
-			bg={navbarBg}
-			borderColor={navbarBorder}
-			filter={navbarFilter}
-			backdropFilter={navbarBackdrop}
-			backgroundPosition='center'
-			backgroundSize='cover'
-			borderRadius='16px'
-			borderWidth='1.5px'
-			borderStyle='solid'
-			transitionDelay='0s, 0s, 0s, 0s'
-			transitionDuration=' 0.25s, 0.25s, 0.25s, 0s'
-			transition-property='box-shadow, background-color, filter, border'
-			transitionTimingFunction='linear, linear, linear, linear'
-			alignItems={{ xl: 'center' }}
-			display={secondary ? 'block' : 'flex'}
-			minH='75px'
-			justifyContent={{ xl: 'center' }}
-			lineHeight='25.6px'
-			mx='auto'
-			mt={secondaryMargin}
-			pb='8px'
-			right={{ base: '12px', md: '30px', lg: '30px', xl: '30px' }}
-			px={{
-				sm: paddingX,
-				md: '10px'
-			}}
-			ps={{
-				xl: '12px'
-			}}
-			pt='8px'
-			top={{ base: '12px', md: '16px', lg: '20px', xl: '20px' }}
-			w={{
-				base: 'calc(100vw - 6%)',
-				md: 'calc(100vw - 8%)',
-				lg: 'calc(100vw - 6%)',
-				xl: 'calc(100vw - 350px)',
-				'2xl': 'calc(100vw - 365px)'
-			}}>
-			<Flex
-				w='100%'
-				flexDirection={{
-					sm: 'column',
-					md: 'row'
-				}}
-				alignItems={{ xl: 'center' }}
-				mb={gap}>
-				<Box mb={{ sm: '8px', md: '0px' }}>
-					<Breadcrumb>
-						<BreadcrumbItem color={secondaryText} fontSize='sm' mb='5px'>
-							<BreadcrumbLink href='#' color={secondaryText}>
-								Pages
-							</BreadcrumbLink>
-						</BreadcrumbItem>
+        {/* Right side */}
+        <HStack gap="20px">
+          <SidebarResponsive
+            routes={props.routes}
+            display={{ base: 'flex', md: 'none' }}
+          />
 
-						<BreadcrumbItem color={secondaryText} fontSize='sm' mb='5px'>
-							<BreadcrumbLink href='#' color={secondaryText}>
-								{brandText}
-							</BreadcrumbLink>
-						</BreadcrumbItem>
-					</Breadcrumb>
-					{/* Here we create navbar brand, based on route name */}
-					<Link
-						color={mainText}
-						href='#'
-						bg='inherit'
-						borderRadius='inherit'
-						fontWeight='bold'
-						fontSize='34px'
-						_hover={{ color: { mainText } }}
-						_active={{
-							bg: 'inherit',
-							transform: 'none',
-							borderColor: 'transparent'
-						}}
-						_focus={{
-							boxShadow: 'none'
-						}}>
-						{brandText}
-					</Link>
-				</Box>
-				<Box ms='auto' w={{ sm: '100%', md: 'unset' }}>
-					<AdminNavbarLinks
-						onOpen={props.onOpen}
-						logoText={props.logoText}
-						secondary={props.secondary}
-						fixed={props.fixed}
-						scrolled={scrolled}
-					/>
-				</Box>
-			</Flex>
-			{secondary ? <Text color='white'>{message}</Text> : null}
-		</Box>
-	);
+          {/* Action buttons */}
+          <HStack>
+            <IconButton
+              aria-label="Add"
+              icon={<FiPlus fontSize={'18px'} />}
+              variant="outline"
+              borderRadius="15px"
+              border={'2px solid'}
+              padding={'10px'}
+              borderColor={'#012540B2'}
+            />
+            <IconButton
+              aria-label="Notifications"
+              icon={<FiBell fontSize={'18px'} />}
+              variant="outline"
+              borderRadius="15px"
+              border={'2px solid'}
+              padding={'10px'}
+              borderColor={'#012540B2'}
+            />
+          </HStack>
+
+          {/* Profile */}
+          <Menu ml="10px">
+            <MenuButton>
+              <HStack spacing="10px">
+                <Avatar size="md" src="/avatar.png" />
+                <Box textAlign="left" display={{ base: 'none', md: 'block' }}>
+                  <Text fontSize="18px" fontWeight="medium" color={'#031227'}>
+                    Thomas Mark
+                  </Text>
+                  <Text fontSize="14px" fontWeight="light" color="gray.500">
+                    @thomas
+                  </Text>
+                </Box>
+              </HStack>
+            </MenuButton>
+            <MenuList>
+              <MenuItem>Profile</MenuItem>
+              <MenuItem>Settings</MenuItem>
+              <MenuItem color="red.400">Logout</MenuItem>
+            </MenuList>
+          </Menu>
+        </HStack>
+      </Flex>
+    </Box>
+  );
 }
 
 AdminNavbar.propTypes = {
-	brandText: PropTypes.string,
-	variant: PropTypes.string,
-	secondary: PropTypes.bool,
-	fixed: PropTypes.bool,
-	onOpen: PropTypes.func
+  routes: PropTypes.array,
+  secondary: PropTypes.bool,
+  fixed: PropTypes.bool,
+  onOpen: PropTypes.func,
 };

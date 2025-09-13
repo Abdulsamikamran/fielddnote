@@ -34,7 +34,7 @@ function Sidebar(props) {
     'unset',
   );
   // Chakra Color Mode
-  let sidebarBg = useColorModeValue('white', 'navy.800');
+  let sidebarBg = useColorModeValue('#F9FAFC', '#F9FAFC');
   let sidebarMargins = '0px';
 
   // SIDEBAR
@@ -48,12 +48,12 @@ function Sidebar(props) {
       <Box
         bg={sidebarBg}
         transition={variantChange}
-        w="300px"
+        w="260px"
         h="100vh"
         m={sidebarMargins}
         minH="100%"
         overflowX="hidden"
-        boxShadow={shadow}
+        // boxShadow={shadow}
       >
         <Scrollbars
           autoHide

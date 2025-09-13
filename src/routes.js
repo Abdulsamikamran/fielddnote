@@ -7,6 +7,7 @@ import {
   MdHome,
   MdLock,
   MdOutlineShoppingCart,
+  MdDashboard,
 } from 'react-icons/md';
 
 // Admin Imports
@@ -24,10 +25,10 @@ import WelcomePage from 'views/auth/welcome';
 
 const routes = [
   {
-    name: 'Main Dashboard',
+    name: 'Dashboard',
     layout: '/admin',
     path: '/default',
-    icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
+    icon: <Icon as={MdDashboard} width="24px" height="24px" color="inherit" />,
     component: <MainDashboard />,
   },
   // {

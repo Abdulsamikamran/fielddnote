@@ -1,4 +1,5 @@
 import { mode } from '@chakra-ui/theme-tools';
+import { px } from 'framer-motion';
 export const inputStyles = {
   components: {
     Input: {
@@ -48,8 +49,9 @@ export const inputStyles = {
         search: (props) => ({
           field: {
             border: 'none',
-            py: '11px',
-            borderRadius: 'inherit',
+            bg: '#EDF1F4',
+
+            borderRadius: '10px',
             _placeholder: { color: 'secondaryGray.600' },
           },
         }),
