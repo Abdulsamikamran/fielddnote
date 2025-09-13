@@ -5,6 +5,7 @@ import Brand from 'components/sidebar/components/Brand';
 import Links from 'components/sidebar/components/Links';
 import SidebarCard from 'components/sidebar/components/SidebarCard';
 import React from 'react';
+import RecordCard from './AudioRecorderCard';
 
 // FUNCTIONS
 
@@ -26,9 +27,10 @@ function SidebarContent(props) {
         </Box>
       </Stack>
 
-      {/* <Box mt="60px" mb="40px" borderRadius="30px">
-        <SidebarCard />
-      </Box> */}
+      <Box mt="60px" mb="40px" borderRadius="30px" w={'full'}>
+        {/* <SidebarCard /> */}
+        <RecordCard />
+      </Box>
     </Flex>
   );
 }

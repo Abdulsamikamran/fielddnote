@@ -6,7 +6,7 @@ export default function BackAction({ title }) {
   const navigate = useNavigate();
 
   return (
-    <Flex align="center" mb="20px">
+    <Flex align="center">
       <IconButton
         icon={<ArrowBackIcon color={'#031227'} />}
         aria-label="Back"

@@ -22,6 +22,8 @@ import IdentityVerification from 'views/auth/identity-verification';
 import WelcomePage from 'views/auth/welcome';
 import ReportsPage from 'views/admin/reports';
 import ReportReview from 'views/admin/reports/reportReview';
+import { FaFolder } from 'react-icons/fa';
+import FileMangerPage from 'views/admin/file-manager';
 
 const routes = [
   {
@@ -32,14 +34,6 @@ const routes = [
     component: <MainDashboard />,
   },
   {
-    name: 'Note',
-    layout: '/admin',
-    path: '/default/note',
-    icon: <Icon as={MdDashboard} width="24px" height="24px" color="inherit" />,
-    component: <NotePage />,
-    sidebar: false,
-  },
-  {
     name: 'Reports',
     layout: '/admin',
     path: '/reports',
@@ -48,6 +42,22 @@ const routes = [
     ),
     component: <ReportsPage />,
   },
+  {
+    name: 'File Manager',
+    layout: '/admin',
+    path: '/file-manager',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <FileMangerPage />,
+  },
+  {
+    name: 'Note',
+    layout: '/admin',
+    path: '/default/note',
+    icon: <Icon as={MdDashboard} width="24px" height="24px" color="inherit" />,
+    component: <NotePage />,
+    sidebar: false,
+  },
+
   {
     name: 'Reports Review',
     layout: '/admin',
