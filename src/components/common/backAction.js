@@ -15,7 +15,12 @@ export default function BackAction({ title }) {
         fontSize={'30px'}
         onClick={() => navigate(-1)} // router -1
       />
-      <Text fontSize="28px" fontWeight="600" color="#031227">
+      <Text
+        fontSize="28px"
+        fontWeight="600"
+        lineHeight={'22px'}
+        color="#031227"
+      >
         {title}
       </Text>
     </Flex>

@@ -24,8 +24,14 @@ import ReportsPage from 'views/admin/reports';
 import ReportReview from 'views/admin/reports/reportReview';
 import { FaFolder } from 'react-icons/fa';
 import FileMangerPage from 'views/admin/file-manager';
+import AudioFilesPage from 'views/admin/file-manager/audioFiles';
+import AudioClipDetails from 'views/admin/file-manager/audioClipDetails';
+import TranscribePage from 'views/admin/file-manager/transcribe';
+import AudioTrimPage from 'views/admin/file-manager/audioTrim';
+import AffectedFilesPage from 'views/admin/file-manager/affectedFiles';
 
 const routes = [
+  //Main SideBar Routes
   {
     name: 'Dashboard',
     layout: '/admin',
@@ -49,6 +55,8 @@ const routes = [
     icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
     component: <FileMangerPage />,
   },
+
+  //Children | Non-Sidebar Routes3
   {
     name: 'Note',
     layout: '/admin',
@@ -69,6 +77,46 @@ const routes = [
     sidebar: false,
   },
 
+  {
+    name: 'Audio Files',
+    layout: '/admin',
+    path: '/file-manager/audio-files',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AudioFilesPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Audio Clip Details',
+    layout: '/admin',
+    path: '/file-manager/audio-files/audio-details',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AudioClipDetails />,
+    sidebar: false,
+  },
+  {
+    name: 'Audio Transcription',
+    layout: '/admin',
+    path: '/file-manager/audio-files/transcribe',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <TranscribePage />,
+    sidebar: false,
+  },
+  {
+    name: 'Audio Trim',
+    layout: '/admin',
+    path: '/file-manager/audio-files/trim',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AudioTrimPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Affected Files',
+    layout: '/admin',
+    path: '/file-manager/affected-files',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AffectedFilesPage />,
+    sidebar: false,
+  },
   {
     name: 'Sign In',
     layout: '/auth',

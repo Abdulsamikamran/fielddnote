@@ -20,8 +20,11 @@ import { MdMusicNote } from 'react-icons/md';
 import { IoWarning } from 'react-icons/io5';
 import { RiMenu3Line } from 'react-icons/ri';
 import { FaMusic, FaPlay } from 'react-icons/fa';
+import Card from 'components/common/card';
+import { useNavigate } from 'react-router-dom';
 
 export default function FileManagerPage() {
+  const navigate = useNavigate();
   const audioFiles = [
     {
       id: 1,
@@ -81,7 +84,7 @@ export default function FileManagerPage() {
   ];
 
   return (
-    <Box p="24px" minH="100vh" bg="#F9FAFB">
+    <Card p="20px">
       {/* Page Title */}
       <Text fontSize="28px" fontWeight="600" color="#012540" mb="20px">
         File Manager
@@ -200,6 +203,7 @@ export default function FileManagerPage() {
           fontSize="11px"
           lineHeight="11px"
           color="#012540"
+          onClick={() => navigate('/admin/file-manager/audio-files')}
         >
           VIEW ALL
         </Button>
@@ -221,6 +225,7 @@ export default function FileManagerPage() {
           fontSize="11px"
           lineHeight="11px"
           color="#012540"
+          onClick={() => navigate('/admin/file-manager/affected-files')}
         >
           VIEW ALL
         </Button>
@@ -231,7 +236,7 @@ export default function FileManagerPage() {
           <ReportCard key={report.id} report={report} />
         ))}
       </Flex>
-    </Box>
+    </Card>
   );
 }
 
