@@ -161,6 +161,7 @@ export default function FileManagerPage() {
             fontWeight={500}
             p={4}
             _hover={{ bg: 'gray.100' }}
+            onClick={() => navigate('/admin/file-manager/affected-files')}
           >
             View Affected Files
           </Button>
@@ -225,7 +226,6 @@ export default function FileManagerPage() {
           fontSize="11px"
           lineHeight="11px"
           color="#012540"
-          onClick={() => navigate('/admin/file-manager/affected-files')}
         >
           VIEW ALL
         </Button>
