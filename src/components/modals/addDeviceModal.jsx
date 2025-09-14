@@ -41,15 +41,6 @@ export default function AddDeviceModal({ isOpen, onClose }) {
     onClose();
   };
 
-  // Auto transition from Step 1 → Step 2
-  //   useEffect(() => {
-  //     if (isOpen && step === 1) {
-  //       const timer = setTimeout(() => setStep(2), 2000);
-  //       return () => clearTimeout(timer);
-  //     }
-  //   }, [isOpen, step]);
-
-  // Handle device select
   const handleDeviceSelect = (id) => {
     setConnectedId(id);
     setDevices((prev) =>

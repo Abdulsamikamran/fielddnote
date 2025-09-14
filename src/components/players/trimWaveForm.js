@@ -7,7 +7,7 @@ import { CiEdit } from 'react-icons/ci';
 import { FaMusic } from 'react-icons/fa';
 import { IoMusicalNoteSharp } from 'react-icons/io5';
 
-export default function TrimWaveform() {
+export default function TrimWaveform({ onClose }) {
   const [audioData, setAudioData] = useState([]);
   const [duration, setDuration] = useState(0);
   const [region, setRegion] = useState({ start: 10, end: 40 });
@@ -85,7 +85,12 @@ export default function TrimWaveform() {
   };
 
   // ====== Actions ======
-  const handleCancel = () => setIsTrimming(false);
+  const handleCancel = () => {
+    setIsTrimming(false);
+    if (onClose) {
+      onClose();
+    }
+  };
   const handleConfirm = () => setIsTrimming(false);
   const handleReset = () => setRegion({ start: 10, end: 40 });
   const handleEditTrim = () => setIsTrimming(true);

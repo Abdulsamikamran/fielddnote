@@ -21,11 +21,16 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { SidebarResponsive } from 'components/sidebar/Sidebar'; // keeps sidebar toggle
 import AddDeviceModal from 'components/modals/addDeviceModal';
+import { FaChevronDown } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import LogoutModal from 'components/modals/logoutModal';
 
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [logOutOpen, setLogoutOpen] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
     window.addEventListener('scroll', changeNavbar);
     return () => window.removeEventListener('scroll', changeNavbar);
@@ -92,7 +97,7 @@ export default function AdminNavbar(props) {
               variant="outline"
               borderRadius="15px"
               border={'2px solid'}
-              padding={'10px'}
+              padding={'0px'}
               borderColor={'#012540B2'}
               onClick={() => setIsOpen(!isOpen)}
             />
@@ -102,7 +107,7 @@ export default function AdminNavbar(props) {
               variant="outline"
               borderRadius="15px"
               border={'2px solid'}
-              padding={'10px'}
+              padding={'0px'}
               borderColor={'#012540B2'}
             />
           </HStack>
@@ -120,17 +125,36 @@ export default function AdminNavbar(props) {
                     @thomas
                   </Text>
                 </Box>
+                <IconButton
+                  aria-label="Notifications"
+                  icon={<FaChevronDown fontSize={'12px'} />}
+                  variant="brand"
+                  size={'sm'}
+                  borderRadius="10px"
+                  border={'2px solid'}
+                  padding={'0px'}
+                  borderColor={'#012540B2'}
+                />
               </HStack>
             </MenuButton>
             <MenuList>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem color="red.400">Logout</MenuItem>
+              <MenuItem onClick={() => navigate('/admin/settings')}>
+                Profile
+              </MenuItem>
+              <MenuItem
+                onClick={() => navigate('/admin/settings/paired-devices')}
+              >
+                Settings
+              </MenuItem>
+              <MenuItem color="red.400" onClick={() => setLogoutOpen(true)}>
+                Logout
+              </MenuItem>
             </MenuList>
           </Menu>
         </HStack>
       </Flex>
       <AddDeviceModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <LogoutModal isOpen={logOutOpen} onClose={() => setLogoutOpen(false)} />
     </Box>
   );
 }

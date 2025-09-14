@@ -2,6 +2,7 @@
 
 import { Box, VStack, IconButton, Text } from '@chakra-ui/react';
 import { MdMic } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 export default function RecordCard({ onClick }) {
   return (

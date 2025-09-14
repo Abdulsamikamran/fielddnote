@@ -29,6 +29,18 @@ import AudioClipDetails from 'views/admin/file-manager/audioClipDetails';
 import TranscribePage from 'views/admin/file-manager/transcribe';
 import AudioTrimPage from 'views/admin/file-manager/audioTrim';
 import AffectedFilesPage from 'views/admin/file-manager/affectedFiles';
+import AudioRecordingPage from 'views/admin/audio-recording';
+import AudioSettingPage from 'views/admin/audio-recording/audioSetting';
+import DetailRecordingPage from 'views/admin/audio-recording/detailRecording';
+import { IoSettingsSharp } from 'react-icons/io5';
+import SettingsPage from 'views/admin/settings';
+import EditProfilePage from 'views/admin/settings/editProfile';
+import AboutUsPage from 'views/admin/settings/aboutUs';
+import PairedDevicePage from 'views/admin/settings/pairedDevice';
+import FAQPage from 'views/admin/settings/Faq';
+import SubscriptionPage from 'views/admin/settings/updateSubscription';
+import CheckoutPage from 'views/admin/settings/checkout';
+import MyPlanPage from 'views/admin/settings/myPlan';
 
 const routes = [
   //Main SideBar Routes
@@ -54,6 +66,15 @@ const routes = [
     path: '/file-manager',
     icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
     component: <FileMangerPage />,
+  },
+  {
+    name: 'Settings',
+    layout: '/admin',
+    path: '/settings',
+    icon: (
+      <Icon as={IoSettingsSharp} width="24px" height="24px" color="inherit" />
+    ),
+    component: <SettingsPage />,
   },
 
   //Children | Non-Sidebar Routes3
@@ -115,6 +136,86 @@ const routes = [
     path: '/file-manager/affected-files',
     icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
     component: <AffectedFilesPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Audio Recording',
+    layout: '/admin',
+    path: '/audio-recording',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AudioRecordingPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Audio Trim Setting',
+    layout: '/admin',
+    path: '/audio-recording/audio-recording-trim',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AudioSettingPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Detail Recording',
+    layout: '/admin',
+    path: '/audio-recording/detail-recording',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <DetailRecordingPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Edit Profile',
+    layout: '/admin',
+    path: '/settings/edit-profile',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <EditProfilePage />,
+    sidebar: false,
+  },
+  {
+    name: 'Update Subscription',
+    layout: '/admin',
+    path: '/settings/update-subscription',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <SubscriptionPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Checkout',
+    layout: '/admin',
+    path: '/settings/update-subscription/checkout',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <CheckoutPage />,
+    sidebar: false,
+  },
+  {
+    name: 'My Subscrption Plan',
+    layout: '/admin',
+    path: '/settings/update-subscription/my-plan',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <MyPlanPage />,
+    sidebar: false,
+  },
+  {
+    name: 'Paired Device',
+    layout: '/admin',
+    path: '/settings/paired-devices',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <PairedDevicePage />,
+    sidebar: false,
+  },
+  {
+    name: 'About Us',
+    layout: '/admin',
+    path: '/settings/about-us',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <AboutUsPage />,
+    sidebar: false,
+  },
+  {
+    name: 'FAQs',
+    layout: '/admin',
+    path: '/settings/faq',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <FAQPage />,
     sidebar: false,
   },
   {

@@ -6,11 +6,13 @@ import Links from 'components/sidebar/components/Links';
 import SidebarCard from 'components/sidebar/components/SidebarCard';
 import React from 'react';
 import RecordCard from './AudioRecorderCard';
+import { useNavigate } from 'react-router-dom';
 
 // FUNCTIONS
 
 function SidebarContent(props) {
   const { routes } = props;
+  const navigate = useNavigate();
   // SIDEBAR
   return (
     <Flex
@@ -29,7 +31,7 @@ function SidebarContent(props) {
 
       <Box mt="60px" mb="40px" borderRadius="30px" w={'full'}>
         {/* <SidebarCard /> */}
-        <RecordCard />
+        <RecordCard onClick={() => navigate('/admin/audio-recording')} />
       </Box>
     </Flex>
   );
