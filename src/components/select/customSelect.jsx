@@ -34,6 +34,8 @@ export default function CustomSelect({ options, placeholder, onChange }) {
         fontSize="14px"
         fontWeight="400"
         bg="transparent"
+        color={'secondaryGray.900'}
+        opacity={0.8}
         rightIcon={<ChevronDownIcon />}
       >
         {value || placeholder}

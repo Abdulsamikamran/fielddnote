@@ -18,10 +18,12 @@ import { FaCamera } from 'react-icons/fa';
 import { useState } from 'react';
 import DeleteAccountModal from 'components/modals/deleteConfirmationModal';
 import LogoutModal from 'components/modals/logoutModal';
+import ChangePasswordBottom from 'components/auth/changePasswordBottom';
 
 export default function SettingsPage() {
   const navigate = useNavigate();
   const [delOpen, setDelOpen] = useState(false);
+  const [changePassOpen, setChangePassOpen] = useState(false);
   const [logOutOpen, setLogoutOpen] = useState(false);
   return (
     <Card minH="100vh" p={5}>
@@ -116,6 +118,7 @@ export default function SettingsPage() {
           align="center"
           borderBottom="1px solid #eee"
           cursor="pointer"
+          onClick={() => setChangePassOpen(true)}
         >
           <Text
             fontSize="16px"
@@ -244,6 +247,10 @@ export default function SettingsPage() {
       </Flex>
       <DeleteAccountModal isOpen={delOpen} onClose={() => setDelOpen(false)} />
       <LogoutModal isOpen={logOutOpen} onClose={() => setLogoutOpen(false)} />
+      <ChangePasswordBottom
+        isOpen={changePassOpen}
+        onClose={() => setChangePassOpen(false)}
+      />
     </Card>
   );
 }

@@ -91,9 +91,14 @@ export default function VerificationBottom({
             justifyContent="center"
             p={8}
           >
-            <Box w="full" maxW="360px" textAlign="center" my="100px">
+            <Box
+              w="full"
+              maxW="360px"
+              textAlign="center"
+              my={{ base: '20px', '2xl': '100px' }}
+            >
               {/* Icon */}
-              <VStack spacing={0} mb="40px">
+              <VStack spacing={0} mb={{ base: '20px', '2xl': '40px' }}>
                 <Image src="/verification.png" alt="verifyIcon" mx="auto" />
               </VStack>
 

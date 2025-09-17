@@ -276,18 +276,6 @@ export default function ForgotPasswordBottom({ isOpen, onClose }) {
                     {successMessage}
                   </Text>
                 )}
-
-                <Text
-                  mt="60px"
-                  fontSize="14px"
-                  textAlign="center"
-                  color="secondary.400"
-                >
-                  I remember it?{' '}
-                  <Link color="#71AB51" fontWeight="600" onClick={onClose}>
-                    SIGN IN
-                  </Link>
-                </Text>
               </>
             )}
           </Box>

@@ -16,6 +16,7 @@ import Card from 'components/common/card';
 import BackAction from 'components/common/backAction';
 import PDFCard from 'components/common/pdfCard';
 import ShareReportModal from 'components/modals/shareReportModal';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 export default function ReportReview() {
   const [activePage, setActivePage] = useState(0);
@@ -48,18 +49,39 @@ export default function ReportReview() {
 
         {/* Paginator */}
       </Card>
-      <HStack justify="center" my={8} spacing={3}>
-        {[0, 1].map((i) => (
-          <Box
-            key={i}
-            w="10px"
-            h="10px"
-            borderRadius="full"
-            bg={activePage === i ? '#57A99A' : 'gray.300'}
-            cursor="pointer"
-            onClick={() => setActivePage(i)}
-          />
-        ))}
+      <HStack justify="center" my={8} spacing={6}>
+        {/* Left Arrow */}
+        <IconButton
+          icon={<ChevronLeftIcon boxSize={10} />} // 👈 bigger icon (6 = 24px)
+          aria-label="Previous"
+          size="md" // medium button
+          variant="ghost"
+          onClick={() => setActivePage((prev) => Math.max(prev - 1, 0))}
+        />
+
+        {/* Dots */}
+        <HStack spacing={3}>
+          {[0, 1].map((i) => (
+            <Box
+              key={i}
+              w="10px"
+              h="10px"
+              borderRadius="full"
+              bg={activePage === i ? '#57A99A' : 'gray.300'}
+              cursor="pointer"
+              onClick={() => setActivePage(i)}
+            />
+          ))}
+        </HStack>
+
+        {/* Right Arrow */}
+        <IconButton
+          icon={<ChevronRightIcon boxSize={10} />} // 👈 bigger icon
+          aria-label="Next"
+          size="md"
+          variant="ghost"
+          onClick={() => setActivePage((prev) => Math.min(prev + 1, 1))}
+        />
       </HStack>
       <ShareReportModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>

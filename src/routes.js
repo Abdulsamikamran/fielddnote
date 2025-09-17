@@ -41,6 +41,7 @@ import FAQPage from 'views/admin/settings/Faq';
 import SubscriptionPage from 'views/admin/settings/updateSubscription';
 import CheckoutPage from 'views/admin/settings/checkout';
 import MyPlanPage from 'views/admin/settings/myPlan';
+import NotificationsPage from 'views/admin/settings/notifications';
 
 const routes = [
   //Main SideBar Routes
@@ -168,6 +169,14 @@ const routes = [
     path: '/settings/edit-profile',
     icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
     component: <EditProfilePage />,
+    sidebar: false,
+  },
+  {
+    name: 'Notifications',
+    layout: '/admin',
+    path: '/settings/notifications',
+    icon: <Icon as={FaFolder} width="24px" height="24px" color="inherit" />,
+    component: <NotificationsPage />,
     sidebar: false,
   },
   {

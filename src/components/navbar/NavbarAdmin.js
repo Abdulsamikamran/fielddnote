@@ -55,7 +55,7 @@ export default function AdminNavbar(props) {
         xl: 'calc(100vw - 290px)',
         '2xl': 'calc(100vw - 290px)',
       }}
-      bg={'transparent'}
+      bg={'#F9FAFC'}
       px="20px"
       py="10px"
       zIndex="10"
@@ -109,6 +109,7 @@ export default function AdminNavbar(props) {
               border={'2px solid'}
               padding={'0px'}
               borderColor={'#012540B2'}
+              onClick={() => navigate('/admin/settings/notifications')}
             />
           </HStack>
 

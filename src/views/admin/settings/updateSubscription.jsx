@@ -80,7 +80,7 @@ export default function SubscriptionPage() {
             color="white"
             cursor={'pointer'}
             onClick={() =>
-              navigate('/admin/settings/update-subscription/my-plan')
+              navigate('/admin/settings/update-subscription/checkout')
             }
           >
             <Flex justify="space-between" align="center" mb={4}>
@@ -175,7 +175,9 @@ export default function SubscriptionPage() {
                 fontWeight="600"
                 px={6}
                 _hover={{ opacity: 0.9 }}
-                onClick={() => setIsOpen(true)}
+                onClick={() =>
+                  navigate('/admin/settings/update-subscription/my-plan')
+                }
               >
                 Choose Plan
               </Button>

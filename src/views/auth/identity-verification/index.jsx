@@ -60,11 +60,11 @@ export default function IdentityVerification() {
       px={4}
       position="relative"
     >
-      <Box position="absolute" top={0} w="full">
+      <Box position="absolute" top={0} w="full" zIndex={0}>
         <Image src="/ellipse.png" alt="bg" w="full" h="200px" />
       </Box>
 
-      <Box w="full" maxW="400px" textAlign="center">
+      <Box w="full" maxW="400px" textAlign="center" zIndex={1}>
         <Heading fontSize="22px" fontWeight="700" mb="40px" color="primary.300">
           Identity Verification
         </Heading>
